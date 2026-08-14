@@ -1,26 +1,93 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ---------- Brand palette ---------- */
+  --color-blue: #1656e0;
+  --color-blue-light: #3e7cf0;
+  --color-blue-dark: #0f3fac;
+  --color-blue-pale: #eaf1fd;
+  --color-blue-pale-2: #f3f7fe;
+  --color-navy: #2f3b4c;
+  --color-navy-soft: #56637a;
+  --color-gray: #64748b;
+  --color-bg: #f8fafc;
+  --color-border: #e3e9f3;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 2px 8px rgba(22, 86, 224, 0.06);
+  --shadow-md: 0 12px 32px rgba(22, 86, 224, 0.12);
+  --shadow-lg: 0 24px 48px rgba(22, 86, 224, 0.16);
+
+  /* ---------- Typography ---------- */
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: var(--font-poppins), var(--font-inter), sans-serif;
+
+  --container-max: 1180px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background: var(--color-bg);
+    color: var(--color-navy);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-landi {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .hero-inner-bg {
+    background:
+      radial-gradient(120% 100% at 22% 0%, rgba(62, 124, 240, 0.22) 0%, rgba(62, 124, 240, 0.08) 32%, rgba(234, 241, 253, 0) 62%),
+      radial-gradient(90% 80% at 88% 8%, rgba(22, 86, 224, 0.14) 0%, rgba(234, 241, 253, 0) 55%),
+      linear-gradient(180deg, var(--color-blue-pale) 0%, var(--color-bg) 100%);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--color-blue-light), var(--color-blue));
+  }
+
+  .cta-gradient {
+    background: linear-gradient(135deg, var(--color-blue-dark), var(--color-blue) 55%, var(--color-blue-light));
+  }
+
+  .icon-gradient {
+    background: linear-gradient(135deg, var(--color-blue-light), var(--color-blue));
+  }
 }
